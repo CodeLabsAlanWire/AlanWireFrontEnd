@@ -1,0 +1,22 @@
+/* .login-form{
+  max-width: 600px;
+  margin: 0px auto;
+  margin-top: 20%;
+}
+.navbar-brand {
+  .logo{
+      max-width: 100px;
+  }
+}
+@media (min-width: 768px) {
+  .login-form{
+      max-width: 600px;
+      margin: 0px auto;
+      margin-top: 10%;
+  }
+  .navbar-brand {
+      .logo{
+          max-width: 125px;
+      }
+  }
+} */
