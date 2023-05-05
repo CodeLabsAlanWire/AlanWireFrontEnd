@@ -1,1 +1,84 @@
-<p>home works!</p>
+<!-- <div class="absolute inset-0 bg-gray-900 bg-opacity-75"></div>
+  <div class="relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-4xl relative">
+        <div *ngIf="currentImage" class="absolute inset-0 bg-center bg-cover transition-opacity ease-in-out duration-500" [style.background-image]="'url(' + currentImage + ')'"></div>
+        <div *ngIf="nextImage" class="absolute inset-0 bg-center bg-cover transition-opacity ease-in-out duration-500" [style.background-image]="'url(' + nextImage + ')'"></div>
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-0 left-0 right-0 px-4 py-6 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl">
+      <div *ngFor="let announcement of announcements" class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="{{announcement.imageUrl}}" alt="{{announcement.title}}" class="w-full h-48 object-cover">
+        <div class="px-4 py-2">
+          <h2 class="text-xl font-bold mb-2">{{announcement.title}}</h2>
+          <p class="text-gray-700 text-base">{{announcement.description}}</p>
+          <a href="#" class="block text-blue-500 font-bold mt-4 hover:underline">Read more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="relative h-80">
+  <div class="absolute top-0 left-0 w-full h-full bg-center bg-no-repeat bg-cover"
+    [ngStyle]="{ 'background-image': 'url(' + currentImage + ')' }">
+  </div>
+  <div class="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+  <div class="absolute inset-0 flex items-center justify-center">
+    <div class="text-center">
+      <h2 class="text-3xl font-bold text-white">{{ currentAnnouncement.title }}</h2>
+      <p class="text-lg font-medium text-white">{{ currentAnnouncement.description }}</p>
+    </div>
+  </div>
+</div> -->
+<!-- <header class="bg-white shadow">
+  <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-bold leading-tight text-gray-900">
+      AlanWire
+    </h1>
+  </div>
+</header> -->
+
+<main>
+  <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+    <div class="lg:flex lg:items-center lg:justify-between">
+      <div class="flex-1 min-w-0">
+        <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+          Announcements
+        </h2>
+      </div>
+      <div class="mt-5 flex lg:mt-0 lg:ml-4">
+        <span class="sm:ml-3">
+          <button
+            type="button"
+            class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          >
+            New Announcement
+          </button>
+        </span>
+      </div>
+    </div>
+    <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        class="bg-white overflow-hidden shadow rounded-lg"
+        *ngFor="let announcement of announcements"
+      >
+        <div class="p-5">
+          <h3 class="text-lg font-medium leading-6 text-gray-900">
+            {{ announcement.title }}
+          </h3>
+          <p class="mt-2 max-w-2xl text-sm text-gray-500">
+            {{ announcement.description }}
+          </p>
+        </div>
+        <div class="bg-gray-50 px-5 py-3">
+          <a
+            href="#"
+            class="text-sm font-medium text-blue-600 hover:text-blue-500"
+            >Read more</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

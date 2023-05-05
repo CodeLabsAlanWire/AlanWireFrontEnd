@@ -8,7 +8,10 @@ import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuardComponent } from './shared/auth-guard/auth-guard.component';
 import { EmployeeDocsComponent } from './employee-docs/employee-docs.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavbarComponent } from './nav-bar/nav-bar.component';
+import { SettingsComponent } from './settings/settings.component';
+
+
 
 @NgModule({
   declarations: [
@@ -18,7 +21,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     SignupComponent,
     AuthGuardComponent,
     EmployeeDocsComponent,
-    NavBarComponent,
+    NavbarComponent,
+    SettingsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

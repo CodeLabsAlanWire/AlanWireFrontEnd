@@ -1,15 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, } from '@angular/core';
+// import { toggleAnimation } from './animation-utils';
 
 @Component({
-  selector: 'app-nav-bar',
+  selector: 'app-navbar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent implements OnInit {
+export class NavbarComponent {
+toggleAnimation() {
+throw new Error('Method not implemented.');
+}
+  showDropdown: boolean = false;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  toggleDropdown(): void {
+    this.showDropdown = !this.showDropdown;
   }
 
+  closeDropdown(): void {
+    this.showDropdown = false;
+  }
 }
+//  toggleAnimation() {
+//   const button = document.querySelector('.settings-button');
+//   button.classList.add('bounce');
+//   setTimeout(() => {
+//     button.classList.remove('bounce');
+//   }, 500);
+// }

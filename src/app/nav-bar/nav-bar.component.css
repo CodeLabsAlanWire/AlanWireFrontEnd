@@ -1,0 +1,27 @@
+click-outside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+
+button:focus-visible {
+  outline: auto;
+}
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.bounce {
+  animation-name: bounce;
+  animation-duration: 500ms;
+  animation-fill-mode: both;
+}
