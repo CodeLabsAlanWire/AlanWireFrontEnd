@@ -4,12 +4,9 @@
 
 export const environment = {
   production: false,
-<<<<<<< Updated upstream
   apiUrl: '',
-  stripePk: ''
-=======
+  stripePk: '',
   apiRoute: 'https://localhost:3000/api/v1/'
->>>>>>> Stashed changes
 };
 
 /*
