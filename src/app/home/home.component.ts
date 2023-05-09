@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+
+
 interface Announcement {
   title: string;
   description: string;
@@ -12,6 +14,8 @@ interface Announcement {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+    primaryColor= "#005596";
 
   announcements: Announcement[] = [
     {
@@ -28,7 +32,17 @@ export class HomeComponent implements OnInit {
       title: 'Summer Family Event',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquam sapien in volutpat ornare. Duis dapibus odio vitae elit tincidunt maximus. Nunc sit amet nulla ac ante pharetra suscipit. Nulla facilisi. Nullam lobortis erat vel consequat imperdiet.',
       imageUrl: 'https://example.com/announcement2.jpg'
-    }
+    },
+    {
+      title: 'Welcome to our Website',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquam sapien in volutpat ornare. Duis dapibus odio vitae elit tincidunt maximus. Nunc sit amet nulla ac ante pharetra suscipit. Nulla facilisi. Nullam lobortis erat vel consequat imperdiet.',
+      imageUrl: 'https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    },
+    {
+      title: 'Welcome to our Website',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquam sapien in volutpat ornare. Duis dapibus odio vitae elit tincidunt maximus. Nunc sit amet nulla ac ante pharetra suscipit. Nulla facilisi. Nullam lobortis erat vel consequat imperdiet.',
+      imageUrl: 'https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    },
   ];
 
   currentAnnouncement: Announcement = this.announcements[0];

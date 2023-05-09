@@ -1,5 +1,5 @@
 import { Component, } from '@angular/core';
-// import { toggleAnimation } from './animation-utils';
+
 
 @Component({
   selector: 'app-navbar',
@@ -7,23 +7,11 @@ import { Component, } from '@angular/core';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavbarComponent {
-toggleAnimation() {
-throw new Error('Method not implemented.');
-}
-  showDropdown: boolean = false;
+  secondaryColor = "#003A66";
 
-  toggleDropdown(): void {
-    this.showDropdown = !this.showDropdown;
-  }
+  showProfileDropdown = false;
 
-  closeDropdown(): void {
-    this.showDropdown = false;
+  toggleProfileDropdown() {
+    this.showProfileDropdown = !this.showProfileDropdown;
   }
 }
-//  toggleAnimation() {
-//   const button = document.querySelector('.settings-button');
-//   button.classList.add('bounce');
-//   setTimeout(() => {
-//     button.classList.remove('bounce');
-//   }, 500);
-// }
