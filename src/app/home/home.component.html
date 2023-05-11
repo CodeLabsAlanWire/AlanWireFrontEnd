@@ -1,1 +1,61 @@
-<p>home works!</p>
+<div [ngStyle]="{'background-color' : primaryColor}">
+  <section class="my-section">
+    <div class="container mx-auto">
+      <div class="flex justify-between items-center">
+        <div class="w-1/2">
+          <h1 class="text-5xl font-bold mb-6">Welcome To AlanWire</h1>
+          <p class="text-xl mb-8">
+            Welcome to our company's landing page for announcements and updates! This is the go-to source for staying up-to-date on the latest news and events within our company. Here, you will find important announcements, company updates, and other relevant information that will help you stay informed and connected with our organization. We encourage you to check back often and to stay engaged with the content posted here. Our team is dedicated to keeping you informed and providing the resources you need to succeed. Thank you for being a part of our team, and we look forward to working with you towards achieving our shared goals.
+          </p>
+        </div>
+        <div class="w-1/2">
+          <img
+            src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="Alan Wire banner"
+            class="h-80 w-full"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+  <main>
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+      <div class="lg:flex lg:items-left lg:justify-left">
+        <div class="flex-1 min-w-0">
+          <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+            Announcements
+          </h2>
+        </div>
+        <div class="mt-5 flex lg:mt-0 lg:ml-4">
+          <span class="sm:ml-3">
+
+          </span>
+        </div>
+      </div>
+      <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div
+          class="bg-white overflow-hidden shadow rounded-lg"
+          *ngFor="let announcement of announcements"
+        >
+          <div class="p-5">
+            <h3 class="text-lg font-medium leading-6 text-gray-900">
+              {{ announcement.title }}
+            </h3>
+            <p class="mt-2 max-w-2xl text-sm text-gray-500">
+              {{ announcement.description }}
+            </p>
+          </div>
+          <div class="bg-gray-50 px-5 py-3">
+            <a
+              href="#"
+              class="text-sm font-medium text-blue-600 hover:text-blue-500"
+              >Read more</a
+            >
+          </div>
+        </div>
+      </div>
+  </div>
+  </main>
+  </section>

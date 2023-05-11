@@ -6,7 +6,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavbarComponent } from './nav-bar/nav-bar.component';
 import { EmployeeDocsComponent } from './employee-docs/employee-docs.component';
 import { AuthInterceptorService } from './shared/auth/auth-interceptor.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
@@ -18,7 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     AppComponent,
     HomeComponent,
     EmployeeDocsComponent,
-    NavBarComponent,
+    NavbarComponent,
   ],
 
   imports: [
