@@ -1,4 +1,4 @@
-import { HttpHandler, HttpInterceptor, HttpParams, HttpRequest, HttpHeaders } from "@angular/common/http";
+import { HttpHandler, HttpInterceptor, HttpRequest, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { exhaustMap, take } from "rxjs/operators";
 import { AuthService } from "./auth.service";
@@ -11,7 +11,7 @@ export class AuthInterceptorService implements HttpInterceptor{
   constructor(private authService: AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    if (req.url.includes('angular-med-tracker-backend.herokuapp.com'))
+    if (req.url.includes('alanwireapi.codefilabsapi.com'))
     {
     return this.authService.currentUser.pipe(
       take(1),

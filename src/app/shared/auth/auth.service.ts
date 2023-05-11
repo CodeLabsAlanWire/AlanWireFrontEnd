@@ -70,7 +70,7 @@ export class AuthService {
       if (loadedUser.token) {
         this.currentUser.next(loadedUser);
         // this.medicationService.updateMedications(loadedUser.id);
-        this.router.navigate(['current-meds']);
+        // this.router.navigate(['current-med']);
       }
     }
   }
@@ -94,7 +94,7 @@ export class AuthService {
     // Save user in local storage
     localStorage.setItem('userData', JSON.stringify(formUser));
     // this.medicationService.updateMedications(formUser.id);
-    this.router.navigate(["current-meds"]);
+    // this.router.navigate(["current-meds"]);
   }
 
   signIn(email: string, password: string) {
