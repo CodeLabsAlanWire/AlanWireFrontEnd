@@ -24,22 +24,20 @@ export class AuthComponent implements OnInit {
   onAuthFormSubmit(formObj: NgForm) {
     if (!formObj.valid) return;
 
-    const { email, password, firstName, lastName } = formObj.value;
+    const { email, password, phone, firstName, lastName } = formObj.value;
 
     if (this.isLoginMode) {
         this.authObsrv = this.authService.signIn(email, password);
       } else {
-        this.authObsrv = this.authService.signUp(email, password, firstName, lastName);
+        this.authObsrv = this.authService.signUp(email, password, phone, firstName, lastName);
       }
 
       this.authObsrv.subscribe(
         (res) => {
           if (this.errMessage) this.errMessage = null;
 
-          // Reroute to /current-meds on success
           if(res.success){
-            // this.medicationService.updateMedications(res.payload.user.id);
-            this.router.navigate(['current-meds']);
+            this.router.navigate(['home']);
           }
         },
         (err) => {

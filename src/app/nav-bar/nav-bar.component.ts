@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, } from '@angular/core';
+
 
 @Component({
-  selector: 'app-nav-bar',
+  selector: 'app-navbar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent implements OnInit {
+export class NavbarComponent {
+  secondaryColor = "#003A66";
 
-  constructor() { }
+  showProfileDropdown = false;
 
-  ngOnInit(): void {
+  toggleProfileDropdown() {
+    this.showProfileDropdown = !this.showProfileDropdown;
   }
-
 }

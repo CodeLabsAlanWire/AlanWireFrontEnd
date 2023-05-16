@@ -16,6 +16,7 @@ export interface AuthResponseData {
       first_name: string;
       last_name: string;
       name: string;
+      phone: string;
       token: {
         id: number;
         created_at: string;
@@ -35,6 +36,7 @@ export interface UserData {
   id: number;
   firstName: string;
   lastName: string;
+  phone: string;
   _token: string;
   _tokenExpirationDate: string;
 }
@@ -69,8 +71,7 @@ export class AuthService {
       // Emit user and redirect to current meds view
       if (loadedUser.token) {
         this.currentUser.next(loadedUser);
-        // this.medicationService.updateMedications(loadedUser.id);
-        // this.router.navigate(['current-med']);
+
       }
     }
   }
@@ -93,8 +94,7 @@ export class AuthService {
     this.currentUser.next(formUser);
     // Save user in local storage
     localStorage.setItem('userData', JSON.stringify(formUser));
-    // this.medicationService.updateMedications(formUser.id);
-    // this.router.navigate(["current-meds"]);
+
   }
 
   signIn(email: string, password: string) {
@@ -135,7 +135,7 @@ export class AuthService {
     this.router.navigate(['auth']);
   }
 
-  signUp(email: string, password: string, firstName: string, lastName: string) {
+  signUp(email: string, password: string, phone: string, firstName: string, lastName: string) {
     // Make post request to backend
     return this.http.post<AuthResponseData>(`${environment.apiRoute}users/create`, {
       // Pass registration data as object
@@ -143,6 +143,7 @@ export class AuthService {
       password: password,
       first_name: firstName,
       last_name: lastName,
+      phone: phone,
       returnSecureToken: true
     }).pipe(
       tap((response) => {

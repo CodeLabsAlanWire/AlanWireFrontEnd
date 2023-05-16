@@ -6,10 +6,13 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavbarComponent } from './nav-bar/nav-bar.component';
 import { EmployeeDocsComponent } from './employee-docs/employee-docs.component';
 import { AuthInterceptorService } from './shared/auth/auth-interceptor.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TeamComponent } from './team/team.component';
+import { AboutComponent } from './about/about.component'
+import { AuthGuard } from './shared/auth/auth.guard';
 
 
 
@@ -18,7 +21,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     AppComponent,
     HomeComponent,
     EmployeeDocsComponent,
-    NavBarComponent,
+    NavbarComponent,
+    TeamComponent,
+    AboutComponent,
   ],
 
   imports: [
@@ -28,7 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     ReactiveFormsModule,
     BrowserModule
   ],
-  providers: [
+  providers: [AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
