@@ -18,6 +18,7 @@ import { AuthGuard } from './shared/auth/auth.guard';
 
 @NgModule({
   declarations: [
+
     AppComponent,
     HomeComponent,
     EmployeeDocsComponent,

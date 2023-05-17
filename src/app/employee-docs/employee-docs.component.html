@@ -1,1 +1,24 @@
-<p>employee-docs works!</p>
+<div class="flex">
+  <div class="w-1/4 bg-gray-200 px-4 py-6 h-screen">
+    <h2 class="text-lg font-bold mb-4">Topics</h2>
+    <ul>
+      <li class="mb-2">
+        <a class="text-blue-500 hover:underline" (click)="loadIframe('https://tailwindcss.com/docs/height')">Topic 1</a>
+      </li>
+      <li class="mb-2">
+        <a  class="text-blue-500 hover:underline">Topic 2</a>
+      </li>
+      <li class="mb-2">
+        <a  class="text-blue-500 hover:underline">Topic 3</a>
+      </li>
+      <li class="mb-2">
+        <a class="text-blue-500 hover:underline">Topic 4</a>
+      </li>
+    </ul>
+  </div>
+  <div class="flex-1 px-4 py-6">
+    <ng-container *ngIf="selectedTopic">
+      <iframe *ngIf="selectedTopic" [src]="selectedTopic" class="w-full h-full border-0"></iframe>
+     </ng-container>
+  </div>
+</div>

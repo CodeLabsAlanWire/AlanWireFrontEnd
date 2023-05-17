@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-employee-docs',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeDocsComponent implements OnInit {
 
-  constructor() { }
+  selectedTopic: SafeResourceUrl | null = null;
 
-  ngOnInit(): void {
+  constructor(private sanitizer: DomSanitizer) {}
+
+  ngOnInit() {}
+
+  loadIframe(url: string) {
+    this.selectedTopic = this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
-
 }
+
+

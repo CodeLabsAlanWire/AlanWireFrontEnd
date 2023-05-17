@@ -7,11 +7,5 @@ import { Component, } from '@angular/core';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavbarComponent {
-  secondaryColor = "#003A66";
-
-  showProfileDropdown = false;
-
-  toggleProfileDropdown() {
-    this.showProfileDropdown = !this.showProfileDropdown;
-  }
+  public showProfileDropdown = false;
 }
