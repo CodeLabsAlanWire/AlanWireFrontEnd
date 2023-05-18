@@ -1,36 +1,52 @@
-
-
-<div class="row">
-  <div class="col-xs-12 col-md-6 offset-md-3">
-    <form (ngSubmit)="onAuthFormSubmit(authFormRef)" #authFormRef="ngForm">
-
-      <div *ngIf="!isLoginMode">
-        <label for="firstName">First Name</label>
-        <input type="text" id="firstName" name="firstName" class="form-control" ngModel required>
-        <label for="lastName">Last Name</label>
-        <input type="text" id="lastName" name="lastName" class="form-control" ngModel required>
-        <label for="lastName">Phone Number</label>
-        <input type="text" id="phone" name="phone" class="form-control" ngModel required>
-      </div>
-
-      <div class="mt-3"><div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" class="form-control" email ngModel required />
-      </div>
-
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" class="form-control" ngModel required minlength="6" />
-        <div *ngIf="!isLoginMode">
-          <label for="password">Password Confirmation</label>
-          <input type="password" id="password" name="password" class="form-control" ngModel required minlength="6" />
+<div class="bg-gray-100 py-4">
+  <div class="max-w-md mx-auto px-4">
+    <div class="flex justify-center mb-4">
+      <div class="bg-white rounded-lg shadow-md w-full">
+        <div class="bg-gray-200 rounded-t-lg">
+          <nav class="nav">
+            <a href="#" class="inline-block" [ngClass]="{'active': isLoginMode}"
+            (click)="isLoginMode = true">
+            Log In
+          </a>
+          <a href="#" class="inline-block" [ngClass]="{'active': !isLoginMode}"
+            (click)="isLoginMode = false">
+            Register
+          </a>
+          </nav>
+        </div>
+        <div class="p-4">
+          <form (ngSubmit)="onAuthFormSubmit(authFormRef)" #authFormRef="ngForm">
+            <div *ngIf="!isLoginMode">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" class="form-control" ngModel required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" class="form-control" ngModel required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" class="form-control" ngModel required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" class="form-control" email ngModel required />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" class="form-control" ngModel required minlength="6" />
+            </div>
+            <div *ngIf="!isLoginMode" class="form-group">
+              <label for="passwordConfirmation">Password Confirmation</label>
+              <input type="password" id="passwordConfirmation" name="passwordConfirmation" class="form-control" ngModel required minlength="6" />
+            </div>
+            <button class="btn btn-primary px-4 py-2 mx-2" type="submit" [disabled]="!authFormRef.valid">{{ isLoginMode ? 'Log In' : 'Register' }}</button>
+          </form>
+          <p class="alert alert-danger mt-3" *ngIf="errMessage">{{ errMessage }}</p>
         </div>
       </div>
-
-        <button class="btn btn-primary" type="submit" [disabled]="!authFormRef.valid">{{ isLoginMode ? 'Log In' : 'Register' }}</button>
-         <button class="btn btn-secondary" type="button" (click)="onSwitchAuthMode()">{{ isLoginMode ? 'Register' : 'Log In' }}</button>
-      </div>
-    </form>
-    <p class='alert alert-danger mt-3' *ngIf="errMessage">{{ errMessage }}</p>
+    </div>
   </div>
-</div>   -->
+</div>
