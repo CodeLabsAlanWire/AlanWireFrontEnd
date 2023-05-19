@@ -68,7 +68,7 @@ export class AuthService {
         _token,
         new Date(_tokenExpirationDate)
       );
-      // Emit user and redirect to current meds view
+      // Emit user and redirect
       if (loadedUser.token) {
         this.currentUser.next(loadedUser);
 
