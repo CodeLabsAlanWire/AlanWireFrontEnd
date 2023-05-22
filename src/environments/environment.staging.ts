@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
+  production: false,
   apiRoute: 'https://alanwireapi.codefilabsapi.com/api/v1/'
 };

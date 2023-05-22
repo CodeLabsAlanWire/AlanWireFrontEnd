@@ -1,7 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthComponent } from './shared/auth/auth.component';
+import { AuthGuard } from './shared/auth/auth.guard';
+import { HomeComponent } from './home/home.component';
+import { EmployeeDocsComponent } from './employee-docs/employee-docs.component';
+import { TeamComponent } from './team/team.component';
+import { AboutComponent } from './about/about.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'employee-docs', component: EmployeeDocsComponent, canActivate: [AuthGuard]},
+  {path: 'team', component: TeamComponent, canActivate: [AuthGuard]},
+  {path: 'about', component: AboutComponent, canActivate: [AuthGuard]},
+  {path: 'auth', component: AuthComponent},
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
