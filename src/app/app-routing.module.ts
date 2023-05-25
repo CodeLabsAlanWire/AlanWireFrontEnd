@@ -6,6 +6,8 @@ import { HomeComponent } from './home/home.component';
 import { EmployeeDocsComponent } from './employee-docs/employee-docs.component';
 import { TeamComponent } from './team/team.component';
 import { AboutComponent } from './about/about.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -13,6 +15,8 @@ const routes: Routes = [
   {path: 'employee-docs', component: EmployeeDocsComponent, canActivate: [AuthGuard]},
   {path: 'team', component: TeamComponent, canActivate: [AuthGuard]},
   {path: 'about', component: AboutComponent, canActivate: [AuthGuard]},
+  {path: 'profile', component: ProfileComponent},
+  {path: 'profile-edit', component: ProfileEditComponent},
   {path: 'auth', component: AuthComponent},
 ]
 
