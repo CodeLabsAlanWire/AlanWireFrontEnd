@@ -20,9 +20,9 @@ export class AuthInterceptorService implements HttpInterceptor{
         const modifiedReq = req.clone({
           headers: new HttpHeaders()
           .set('Authorization', (`Bearer ${user.token as string}`))
-          .set('content-type', 'application/json')
+          .set('Content-Type', 'application/json')
           .set('Access-Control-Allow-Origin', 'https://alanwire-frontend.web.app')
-          .set('Access-Control-Allow-Methods', '*')
+          .set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PATCH, PUT, DELETE')
           .set('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version')
         });
         return next.handle(modifiedReq);
