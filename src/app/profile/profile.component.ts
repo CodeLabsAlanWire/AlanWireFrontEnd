@@ -1,6 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { ApiService } from '../shared/api.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,14 +9,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
 
-  constructor(private router: Router) {}
+ apiData: any;
 
-  ngOnInit(): void {
-  }
+ constructor(private router: Router, private http: HttpClient, private apiService: ApiService) {}
 
-  editProfile () {
+ ngOnInit() {
+  this.fetchEmployeeData();
+}
+
+ editProfile () {
     this.router.navigate(['/profile-edit'])
   }
-}
+
+  fetchEmployeeData () {
+    this.apiService.getEmployeeData().subscribe(
+      (data: any) => {
+        this.apiData = data;
+      },
+        (error: any) => {
+          console.error('Error:', error);
+        }
+      );
+    }
+  }

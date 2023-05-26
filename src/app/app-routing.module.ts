@@ -15,8 +15,8 @@ const routes: Routes = [
   {path: 'employee-docs', component: EmployeeDocsComponent, canActivate: [AuthGuard]},
   {path: 'team', component: TeamComponent, canActivate: [AuthGuard]},
   {path: 'about', component: AboutComponent, canActivate: [AuthGuard]},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'profile-edit', component: ProfileEditComponent},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: 'profile-edit', component: ProfileEditComponent, canActivate: [AuthGuard]},
   {path: 'auth', component: AuthComponent},
 ]
 
