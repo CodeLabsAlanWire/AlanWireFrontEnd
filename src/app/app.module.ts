@@ -23,6 +23,7 @@ import { ProfileEditComponent } from './profile/profile-edit/profile-edit.compon
 
 @NgModule({
   declarations: [
+
     AppComponent,
     HomeComponent,
     EmployeeDocsComponent,

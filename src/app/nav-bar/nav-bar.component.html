@@ -81,9 +81,93 @@
           </button>
           </li>
         </ul>
+<nav class="top-0 flex justify-around p-5" style="background-color: #003A66;">
+  <div class="flex gap-4">
+    <img
+      src="https://logo.clearbit.com/alanwire.com"
+      class="h-10 w-10"
+      alt="Company logo"
+    />
+    <div *ngIf="isAuthenticated">
+      <div class="flex gap-4">
+        <a
+        routerLink="home"
+        routerLinkActive="bg-sky-800 "
+        class="text-white py-2 px-3 transition-colors duration-300 ease-in-out rounded-lg"
+        >Dashboard</a
+      >
+      <a
+        routerLink="/employee-docs"
+        routerLinkActive="bg-sky-800"
+        class="text-white py-2 px-3 transition-colors duration-300 ease-in-out rounded-lg"
+        >Docs</a
+      >
+      <a
+        routerLink="/team"
+        routerLinkActive="bg-sky-800  "
+        class="text-white py-2 px-3 transition-colors duration-300 ease-in-out rounded-lg"
+        >Team</a
+      >
+
+      <a
+        routerLink="/calendar"
+        routerLinkActive="bg-sky-800  "
+        class="text-white py-2 px-3 transition-colors duration-300 ease-in-out rounded-lg"
+        >Calendar</a
+      >
+      <a
+        routerLink="/about"
+        routerLinkActive="bg-sky-800  "
+        class="text-white py-2 px-3 transition-colors duration-300 ease-in-out rounded-lg"
+        >About Us</a
+      >
+      </div>
+    </div>
+    <i></i>
+    <div class="relative flex justify-center items-center" *ngIf="isAuthenticated">
+      <button
+        class="focus:outline-none"
+        (click)="showProfileDropdown = !showProfileDropdown"
+      >
+        <img
+          class="h-10 w-10 rounded-full"
+          src="https://source.unsplash.com/random/64x64"
+          alt="Profile picture"
+        >
+      </button>
+      <div
+        class="absolute top-14 left-50 -mr-4 bg-gray-200 rounded-lg shadow-lg w-48"
+        *ngIf="showProfileDropdown"
+      >
+        <ul class="py-2">
+          <li>
+            <a
+              href="#"
+              class="block px-4 py-2 text-gray-800 hover:bg-gray-300"
+            >
+              Profile
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="block px-4 py-2 text-gray-800 hover:bg-gray-300"
+            >
+              Settings
+            </a>
+          </li>
+          <li>
+            <button
+              (click)="logOut()"
+              class="block px-4 py-2 text-gray-800 hover:bg-gray-300"
+            >
+              Logout
+          </button>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
+
+
 </nav>
-
-
