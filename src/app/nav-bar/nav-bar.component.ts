@@ -1,17 +1,27 @@
-import { Component, } from '@angular/core';
-
-
+import { Component, OnDestroy, OnInit, } from '@angular/core';
+import { AuthService } from '../shared/auth/auth.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavbarComponent {
-  secondaryColor = "#003A66";
+export class NavbarComponent implements OnInit, OnDestroy{
 
-  showProfileDropdown = false;
+  isAuthenticated!: boolean;
 
-  toggleProfileDropdown() {
-    this.showProfileDropdown = !this.showProfileDropdown;
+  public showProfileDropdown = false;
+
+  constructor(private authService: AuthService){}
+  
+  ngOnInit(): void {
+      this.authService.currentUser.subscribe((user) => {
+        this.isAuthenticated = !!user;
+      });
   }
+  logOut(){
+    this.authService.signOut();
+  }
+  ngOnDestroy(): void {
+    this.authService.currentUser.unsubscribe();
+}
 }
