@@ -12,25 +12,11 @@ import { ProfileEditComponent } from './profile/profile-edit/profile-edit.compon
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  {
-    path: 'employee-docs',
-    component: EmployeeDocsComponent,
-    canActivate: [AuthGuard],
-  },
+  { path: 'employee-docs', component: EmployeeDocsComponent, canActivate: [AuthGuard] },
   { path: 'team', component: TeamComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
-  {
-    path: 'profile/:id',
-    component: ProfileComponent,
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: 'edit',
-        component: ProfileEditComponent,
-        canActivate: [AuthGuard],
-      },
-    ],
-  },
+  { path: 'profile/:id/edit', component: ProfileEditComponent, pathMatch: 'full', canActivate: [AuthGuard] },
+  { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard], pathMatch: 'full'},
   { path: 'auth', component: AuthComponent },
 ];
 
