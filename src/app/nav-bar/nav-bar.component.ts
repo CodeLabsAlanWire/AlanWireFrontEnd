@@ -1,32 +1,32 @@
-import { Component, OnDestroy, OnInit, } from '@angular/core';
-import { AuthService } from '../shared/auth/auth.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AuthService, UserData } from '../shared/auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  styleUrls: ['./nav-bar.component.css'],
 })
-export class NavbarComponent implements OnInit, OnDestroy{
+export class NavbarComponent implements OnInit, OnDestroy {
+  isAuthenticated!: boolean;
 
-isAuthenticated!: boolean;
-  
-public showProfileDropdown = false;
+  storedUser = localStorage.getItem('userData');
 
-constructor(private authService: AuthService){}
+  userId: UserData = JSON.parse(this.storedUser as string);
 
+  public showProfileDropdown = false;
+
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-      this.authService.currentUser.subscribe((user) => {
-        this.isAuthenticated = !!user;
-      });
+    this.authService.currentUser.subscribe((user) => {
+      this.isAuthenticated = !!user;
+    });
   }
-  
-  logOut(){
+
+  logOut() {
     this.authService.signOut();
   }
   ngOnDestroy(): void {
     this.authService.currentUser.unsubscribe();
+  }
 }
-
-
-
