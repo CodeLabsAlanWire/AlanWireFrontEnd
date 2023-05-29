@@ -11,35 +11,32 @@ export interface UserPayload {
   status: number;
 }
 
+export interface GetAllPayload {
+  success: boolean;
+  payload: Employee[];
+  status: number;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
   constructor(private http: HttpClient, private router:Router) {}
 
+  getAll(): Observable<any> {
+    return this.http.get<GetAllPayload>(`${environment.apiRoute}users/get_all`);
+  }
+
   getSelf(): Observable<any> {
-    return this.http.get<UserPayload>(
-      `${environment.apiRoute}users/me`
-    );
+    return this.http.get<UserPayload>(`${environment.apiRoute}users/me`);
   }
 
-
-  validateAdmin() {
-    return this.http.get(`${environment.apiRoute}users/get_all`);
+  updateEmployee (formData): Observable<any> {
+    return this.http.post(`${environment.apiRoute}users/update`, formData)
   }
 
-  updateEmployee (formData) {
-    this.http.post(`${environment.apiRoute}user/update`, formData).subscribe(
-      (response: UserPayload) => {
-        console.log('API Response:', response);
-        if (response.success) {
-          this.router.navigate(['./profile']);
-        }
-      },
-      (error) => {
-        console.error('API Error:', error);
-      }
-    );
+  validateAdmin(): Observable<any>{
+    return this.http.get(`${environment.apiRoute}users/validate`);
   }
 
 }

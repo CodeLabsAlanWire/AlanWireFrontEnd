@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ApiService } from 'src/app/shared/api.service';
+import { ApiService, UserPayload } from 'src/app/shared/api.service';
 import { Employee } from 'src/app/shared/employee.interface';
 import { UsersService } from 'src/app/shared/users.service';
 
@@ -18,9 +19,9 @@ export class ProfileEditComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private http: HttpClient,
     private apiService: ApiService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -37,13 +38,23 @@ export class ProfileEditComponent implements OnInit {
 
   onSubmit() {
     const formData = {
-      id: this.userInfo.id,
+      user_id: this.userInfo.id,
       email: this.profileForm.value.email,
       phone: this.profileForm.value.phone,
       emergency_contact_name: this.profileForm.value.emergencyContactName,
       emergency_contact_phone: this.profileForm.value.emergencyContactPhone,
     };
 
-    this.apiService.updateEmployee(formData);
+    this.apiService.updateEmployee(formData).subscribe(
+      (response: UserPayload) => {
+        console.log('API Response:', response);
+        if (response.success) {
+          this.router.navigate(['./profile/' + response.payload.id]);
+        }
+      },
+      (error) => {
+        console.error('API Error:', error);
+      }
+    );
   }
 }

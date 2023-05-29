@@ -7,6 +7,7 @@ export const environment = {
   apiUrl: '',
   stripePk: '',
   apiRoute: 'https://alanwireapi.codefilabsapi.com/api/v1/'
+  // apiRoute: 'http://127.0.0.1:3000/api/v1/'
 };
 
 /*
