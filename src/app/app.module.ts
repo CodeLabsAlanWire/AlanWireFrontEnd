@@ -1,25 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './nav-bar/nav-bar.component';
 import { EmployeeDocsComponent } from './employee-docs/employee-docs.component';
 import { AuthInterceptorService } from './shared/auth/auth-interceptor.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TeamComponent } from './team/team.component';
 import { AboutComponent } from './about/about.component'
 import { AuthGuard } from './shared/auth/auth.guard';
+import { CalendarComponent } from './calendar/calendar.component';
 import { ProfileComponent } from './profile/profile.component';
-import { HttpClient } from '@angular/common/http';
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -30,6 +28,7 @@ import { ProfileEditComponent } from './profile/profile-edit/profile-edit.compon
     NavbarComponent,
     TeamComponent,
     AboutComponent,
+    CalendarComponent,
     ProfileComponent,
     ProfileEditComponent
   ],
