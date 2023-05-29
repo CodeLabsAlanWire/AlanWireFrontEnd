@@ -8,6 +8,7 @@ import { TeamComponent } from './team/team.component';
 import { AboutComponent } from './about/about.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
