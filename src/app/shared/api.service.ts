@@ -23,6 +23,11 @@ export class ApiService {
     );
   }
 
+
+  validateAdmin() {
+    return this.http.get(`${environment.apiRoute}users/get_all`);
+  }
+
   updateEmployee (formData) {
     this.http.post(`${environment.apiRoute}user/update`, formData).subscribe(
       (response: UserPayload) => {
@@ -36,4 +41,5 @@ export class ApiService {
       }
     );
   }
-  }
+ 
+
