@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of allUsers">
+        <tr *ngFor="let user of allUsers" style="cursor: pointer;">
           <a (click)="navigateToProfile(user[0])">
             <td>{{user[2]}}</td>
             <td>{{user[1]}}</td>
