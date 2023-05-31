@@ -4,6 +4,7 @@ export class User {
     public id: number,
     public firstName: string,
     public lastName: string,
+    public isAdmin: boolean,
     private _token: string,
     private _tokenExpirationDate: Date
   ) {}

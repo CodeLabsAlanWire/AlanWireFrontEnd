@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
   { path: 'profile/:id/edit', component: ProfileEditComponent, pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard], pathMatch: 'full'},
+  { path: 'calendar', component: CalendarComponent, canActivate: [AuthGuard], pathMatch: 'full'},
   { path: 'auth', component: AuthComponent },
 ];
 

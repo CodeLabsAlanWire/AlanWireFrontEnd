@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService, UserPayload } from '../shared/api.service';
+import { ApiService } from '../shared/api.service';
 import { Employee } from '../shared/employee.interface';
 import { Subscription } from 'rxjs';
 import { UsersService } from '../shared/users.service';
@@ -12,7 +12,7 @@ import { UsersService } from '../shared/users.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit, OnDestroy{
   userSub: Subscription;
 
   apiData!: Employee;
@@ -34,11 +34,14 @@ export class ProfileComponent {
         console.error('Error:', error);
       }
     );
-    this.usersService.getUserData();
   }
 
   editUser() {
     this.router.navigate(['./edit'], { relativeTo: this.route });
+  }
+
+  ngOnDestroy(): void {
+      this.userSub.unsubscribe();
   }
 
 }

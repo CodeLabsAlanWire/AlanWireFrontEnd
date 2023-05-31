@@ -20,6 +20,7 @@
           >Docs</a
         >
         <a
+          *ngIf="isAdmin"
           routerLink="/team"
           routerLinkActive="bg-sky-800  "
           class="text-white py-2 px-3 transition-colors duration-300 ease-in-out rounded-lg"
@@ -62,7 +63,7 @@
           <li>
             <a
               [routerLink]="'/profile/' + userId.id"
-              (click)="showProfileDropdown = false"
+              (click)="showProfileDropdown = false; navigateToProfile(userId.id)"
               class="block px-4 py-2 text-gray-800 hover:bg-gray-300"
             >
               Profile
