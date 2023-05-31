@@ -1,39 +1,155 @@
-<div class="container mx-auto p-4">
-  <div class="flex justify-between items-center mb-4">
-    <button class="bg-blue-500 text-white px-4 py-2 rounded-md" (click)="previousMonth()">Previous</button>
-    <h2 class="text-lg font-bold">{{ currentDate.format('MMMM YYYY') }}</h2>
-    <button class="bg-blue-500 text-white px-4 py-2 rounded-md" (click)="nextMonth()">Next</button>
+<div class="container mx-auto p-6 bg-white shadow-md rounded-md">
+  <div class="flex justify-between items-center mb-6">
+    <button
+      class="bg-blue-600 text-white px-5 py-2 rounded-full transition duration-200 hover:bg-blue-700 focus:ring-2 focus:ring-blue-600"
+      (click)="previousMonth()"
+    >
+      Previous
+    </button>
+    <h2 class="text-2xl font-semibold text-gray-700">
+      {{ currentDate.format("MMMM YYYY") }}
+    </h2>
+    <button
+      class="bg-blue-600 text-white px-5 py-2 rounded-full transition duration-200 hover:bg-blue-700 focus:ring-2 focus:ring-blue-600"
+      (click)="nextMonth()"
+    >
+      Next
+    </button>
   </div>
-
-  <div class="grid grid-cols-7 gap-4">
-    <div class="text-center font-semibold">Sunday</div>
-    <div class="text-center font-semibold">Monday</div>
-    <div class="text-center font-semibold">Tuesday</div>
-    <div class="text-center font-semibold">Wednesday</div>
-    <div class="text-center font-semibold">Thursday</div>
-    <div class="text-center font-semibold">Friday</div>
-    <div class="text-center font-semibold">Saturday</div>
-
-    <div *ngFor="let day of calendarDays" class="text-center border border-gray-300 p-8">
-      <div class="cursor-pointer" (click)="addEvent(day)">
-        {{ day.format('D') }}
-      </div>
-      <div *ngIf="isEventOnDay(day)" class="text-sm mt-1  flex items-center">
-        {{ getEventNameForDay(day) }}
-        <button class="text-red-500 px-2 py-1 rounded-md hover:bg-red-500 hover:text-white" (click)="deleteEvent(day)">Delete</button>
-      </div>
+  <div class="grid grid-cols-7 gap-6">
+    <div class="text-center font-semibold text-gray-600 uppercase">Sunday</div>
+    <div class="text-center font-semibold text-gray-600 uppercase">Monday</div>
+    <div class="text-center font-semibold text-gray-600 uppercase">Tuesday</div>
+    <div class="text-center font-semibold text-gray-600 uppercase">
+      Wednesday
+    </div>
+    <div class="text-center font-semibold text-gray-600 uppercase">
+      Thursday
+    </div>
+    <div class="text-center font-semibold text-gray-600 uppercase">Friday</div>
+    <div class="text-center font-semibold text-gray-600 uppercase">
+      Saturday
     </div>
 
+    <div
+      *ngFor="let day of calendarDays"
+      class="border border-gray-300 rounded-lg bg-white shadow min-h-[8rem] flex flex-col"
+    >
+      <div class="flex justify-between items-center">
+        <div class="p-2 text-lg text-gray-700">
+          {{ day.format("D") }}
+        </div>
+        <button
+          (click)="addEvent(day)"
+          class="rounded-full p-1 mr-2 bg-green-600 hover:bg-green-800 transition-all duration-300 ease-in-out flex items-center justify-center hover:scale-110"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="white"
+            class="h-4 w-4"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 4v16m8-8H4"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div class="flex flex-col gap-2">
+        <div
+          class="flex justify-between items-center px-3 mx-1 border border-gray-400 rounded-2xl py-1"
+          *ngIf="isEventOnDay(day)"
+        >
+          <span
+            class="text-gray-700 font-semibold text-ellipsis overflow-hidden whitespace-nowrap"
+          >
+            {{ getEventNameForDay(day) }}
+          </span>
+          <button
+            class="text-red-500 px-2 py-1 rounded-md hover:bg-red-500 hover:text-white transition duration-200"
+            (click)="deleteEvent(day)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+      <!-- <button
+        (click)="addEvent(day)"
+        class="absolute top-2 right-2 rounded-full p-1 bg-green-600 hover:bg-green-800 transition duration-200 flex items-center justify-center"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="white"
+          class="h-4 w-4"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 4v16m8-8H4"
+          ></path>
+        </svg>
+      </button>
+      <div class="absolute top-0 left-0 p-2 text-lg text-gray-700">
+        {{ day.format("D") }}
+      </div>
+      <div
+        *ngIf="isEventOnDay(day)"
+        class="text-sm mt-1 flex flex-col items-start p-2"
+      >
+        <span class="text-gray-700 font-semibold">
+          {{ getEventNameForDay(day) }}
+        </span>
+        <button
+          class="text-red-500 px-2 py-1 rounded-md hover:bg-red-500 hover:text-white transition duration-200 mt-2 self-end"
+          (click)="deleteEvent(day)"
+        >
+          Delete
+        </button>
+      </div> -->
+    </div>
   </div>
 </div>
-
-<div *ngIf="showEventForm" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-  <div class="bg-white p-4 rounded-md shadow">
-    <h3 class="text-lg font-bold mb-2">Add Event</h3>
-    <form (submit)="submitEvent()">
-      <input type="text" [(ngModel)]="eventName" name="Event Name" placeholder="Event Name" class="block w-full border-gray-300 rounded-md mb-2 p-2" required>
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">Add</button>
-      <button type="button" (click)="cancelEvent()" class="bg-gray-500 text-white px-4 py-2 rounded-md ml-2">Cancel</button>
+<div
+  *ngIf="showEventForm"
+  class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70"
+>
+  <div
+    class="bg-white p-6 rounded-md shadow-md flex flex-col justify-center items-center gap-6"
+  >
+    <h3 class="text-2xl font-semibold mb-4 text-center text-gray-700">
+      Add Event
+    </h3>
+    <form class="flex flex-col gap-4 justify-center" (submit)="submitEvent()">
+      <input
+        type="text"
+        [(ngModel)]="eventName"
+        name="Event Name"
+        placeholder="Event Name"
+        class="w-full border-gray-300 rounded-md mb-2 p-3 border focus:border-blue-600 focus:ring-2 focus:ring-blue-200"
+        required
+      />
+      <div class="flex gap-4">
+        <button
+          type="button"
+          (click)="cancelEvent()"
+          class="bg-gray-500 text-white px-5 py-2 rounded-full transition duration-200 hover:bg-gray-600 focus:ring-2 focus:ring-gray-500 w-full"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="bg-blue-600 text-white px-5 py-2 rounded-full transition duration-200 hover:bg-blue-700 focus:ring-2 focus:ring-blue-600 w-full"
+        >
+          Add
+        </button>
+      </div>
     </form>
   </div>
 </div>
