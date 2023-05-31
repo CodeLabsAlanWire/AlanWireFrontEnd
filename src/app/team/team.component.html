@@ -1,1 +1,23 @@
-<p>team works!</p>
+<div>
+  <div>
+    <h1>Team Members</h1>
+  </div>
+  <div>
+    <table class="table-auto">
+      <thead>
+        <tr>
+          <th>Last Name</th>
+          <th>First Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of allUsers" style="cursor: pointer;">
+          <a (click)="navigateToProfile(user[0])">
+            <td>{{user[2]}}</td>
+            <td>{{user[1]}}</td>
+          </a>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
