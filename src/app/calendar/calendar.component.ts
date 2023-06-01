@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
 
 interface CalendarEvent {
@@ -19,10 +20,14 @@ export class CalendarComponent {
   eventName: string;
   events: CalendarEvent[] = [];
 
-  constructor() {
+
+  constructor(private http: HttpClient) {
+
     this.currentDate = moment();
     this.generateCalendar();
   }
+
+
 
   generateCalendar() {
     const startDate = moment(this.currentDate).startOf('month').startOf('week');
@@ -60,6 +65,7 @@ export class CalendarComponent {
         day: this.selectedDay,
         name: this.eventName
       };
+      this.createEvent()
       this.events.push(event);
       this.cancelEvent();
     }
@@ -79,4 +85,24 @@ export class CalendarComponent {
     const event = this.events.find(event => event.day.isSame(day, 'day'));
     return event ? event.name : '';
   }
-}
+
+  // createEvent(name: string, day: number, month: number, year: number) {
+    createEvent() {
+    // const event = { name, day, month, year };
+    const event = {
+      name: 'hello',
+      day: 2,
+      month: 11,
+      year: 2020
+    }
+
+
+    this.http.post('https://alanwireapi.codefilabsapi.com/api/v1/events/create', {event}).subscribe((res) => console.log(res))
+  }
+
+
+  }
+
+
+
+
