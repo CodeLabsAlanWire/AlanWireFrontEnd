@@ -19,6 +19,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
 import { AdminComponent } from './admin/admin.component';
+import { AnnouncementsComponent } from './announcements/announcements.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AdminComponent } from './admin/admin.component';
     CalendarComponent,
     ProfileComponent,
     ProfileEditComponent,
-    AdminComponent
+    AdminComponent,
+    AnnouncementsComponent
   ],
 
   imports: [

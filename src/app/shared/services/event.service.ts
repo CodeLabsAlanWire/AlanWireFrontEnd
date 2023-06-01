@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 export interface Event {
   name: string;
@@ -17,7 +17,13 @@ export class EventService {
   private http = inject(HttpClient);
 
   createEvent(event: Event) {
-    return this.http.post<any>(this.BASE_URL + '/create', event);
+    let params = {
+      name: event.name,
+      day: event.day,
+      month: event.month,
+      year: event.year
+    }
+    return this.http.post<any>(this.BASE_URL + '/create', params);
   }
 
   deleteEvent(id: number) {

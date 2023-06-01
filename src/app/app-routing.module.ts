@@ -10,6 +10,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { AdminComponent } from './admin/admin.component';
+import { AnnouncementsComponent } from './announcements/announcements.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'profile/:id/edit', component: ProfileEditComponent, pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard], pathMatch: 'full'},
   { path: 'calendar', component: CalendarComponent, canActivate: [AuthGuard], pathMatch: 'full'},
+  { path: 'announcements/:id', component: AnnouncementsComponent, canActivate: [AuthGuard], pathMatch: 'full'},
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], pathMatch: 'full' },
   { path: 'auth', component: AuthComponent },
 ];

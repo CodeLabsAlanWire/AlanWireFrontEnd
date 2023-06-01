@@ -11,7 +11,9 @@ export class AuthInterceptorService implements HttpInterceptor{
   constructor(private authService: AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    if (req.url.includes('alanwireapi.codefilabsapi.com'))
+    if (req.url.includes('alanwireapi.codefilabsapi.com')
+    // || req.url.includes('127.0.0.1:3000')
+    )
     {
     return this.authService.currentUser.pipe(
       take(1),

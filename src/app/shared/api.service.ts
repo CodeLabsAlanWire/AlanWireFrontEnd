@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Employee } from './employee.interface';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { Announcement } from '../home/home.component';
 
 export interface SelfPayload {
   success: boolean;
@@ -26,17 +27,46 @@ export interface GetAllPayload {
   status: number;
 }
 
-// export interface ValidateAdminResponse {
-//   success: boolean;
-//   payload: string;
-//   status: number;
-// }
+export interface AnnouncementReturn {
+  success: boolean;
+  payload: {
+    id: number;
+    title: string;
+    body: string;
+  }
+  status: number;
+}
+
+export interface AnnouncementsReturn {
+  success: boolean;
+  payload: Announcement[];
+  status: number;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
   constructor(private http: HttpClient, private router:Router) {}
+
+  createAnnouncement(title: string, body: string) {
+    let params = {
+      title: title,
+      body: body
+    };
+    return this.http.post<AnnouncementReturn>(`${environment.apiRoute}announcements/new`, params)
+  }
+
+  getAnnouncement(id: number) {
+    let params = {
+      id: id
+    };
+    return this.http.post<AnnouncementsReturn>(`${environment.apiRoute}announcements/view`, params)
+  }
+
+  getAnnouncements() {
+    return this.http.get<AnnouncementsReturn>(`${environment.apiRoute}announcements/all`)
+  }
 
   getAll(): Observable<any> {
     return this.http.get<GetAllPayload>(`${environment.apiRoute}users/get_all`);
@@ -52,12 +82,5 @@ export class ApiService {
   updateEmployee (formData): Observable<any> {
     return this.http.post<UserPayload>(`${environment.apiRoute}users/update`, formData);
   }
-
-  // validateAdmin(userToken): Observable<any>{
-  //   let params = {
-  //     token: userToken
-  //   }
-  //   return this.http.post<ValidateAdminResponse>(`${environment.apiRoute}users/validate`, params);
-  // }
 
 }
