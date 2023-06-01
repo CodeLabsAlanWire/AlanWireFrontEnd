@@ -1,3 +1,19 @@
+<div id="modal" style="display: none;">
+  <div class="z-40 bg-gray-500 opacity-80 w-screen h-screen fixed">
+  </div>
+  <div class="flex justify-center items-center">
+    <div class="z-50 bg-white rounded-lg fixed mt-28">
+      <div class="p-5">
+        <h3 class="text-lg font-medium leading-6 text-gray-900" id="modalTitle">
+        </h3>
+        <p class="mt-2 max-w-2xl text-sm text-gray-500" id="modalBody">
+        </p>
+      </div>
+      <button class='text-sm font-medium text-blue-600 hover:text-blue-500 m-5' (click)="hideModal()">Close</button>
+    </div>
+  </div>
+</div>
+
 <main
   class="flex flex-col min-h-screen gap-6 px-5 xl:px-3"
   style="background-color: #005596"
@@ -35,23 +51,22 @@
       class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 container mx-auto"
     >
       <div
-        class="bg-white overflow-hidden shadow rounded-lg"
-        *ngFor="let announcement of announcements"
+        class="bg-white overflow-hidden shadow rounded-lg h-48"
+        style="white-space: nowrap; text-overflow: ellipsis;"
+        *ngFor="let announcement of announcements; index as i"
       >
         <div class="p-5">
           <h3 class="text-lg font-medium leading-6 text-gray-900">
             {{ announcement.title }}
           </h3>
           <p class="mt-2 max-w-2xl text-sm text-gray-500">
-            {{ announcement.description }}
+            {{ announcement.body }}
           </p>
         </div>
         <div class="bg-gray-50 px-5 py-3">
-          <a
-            href="#"
-            class="text-sm font-medium text-blue-600 hover:text-blue-500"
-            >Read more</a
-          >
+          <button class="text-sm font-medium text-blue-600 hover:text-blue-500" (click)="openModal(i)">
+            Read more
+          </button>
         </div>
       </div>
     </div>

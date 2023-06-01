@@ -18,6 +18,8 @@ import { AuthGuard } from './shared/auth/auth.guard';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
+import { AdminComponent } from './admin/admin.component';
+import { AnnouncementsComponent } from './announcements/announcements.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { ProfileEditComponent } from './profile/profile-edit/profile-edit.compon
     AboutComponent,
     CalendarComponent,
     ProfileComponent,
-    ProfileEditComponent
+    ProfileEditComponent,
+    AdminComponent,
+    AnnouncementsComponent
   ],
 
   imports: [

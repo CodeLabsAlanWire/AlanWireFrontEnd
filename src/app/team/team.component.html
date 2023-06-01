@@ -1,1 +1,22 @@
-<p>team works!</p>
+<div>
+  <div class="text-xl font-bold mb-4">Team Members</div>
+  <table class="w-full border-collapse">
+    <thead>
+      <tr>
+        <th class="py-2 px-4 border-b">Last Name</th>
+        <th class="py-2 px-4 border-b">First Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let user of allUsers">
+        <tr
+          class="cursor-pointer hover:bg-gray-100"
+          (click)="navigateToProfile(user[0])"
+        >
+          <td class="py-2 px-4 border-b">{{ user[2] }}</td>
+          <td class="py-2 px-4 border-b">{{ user[1] }}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

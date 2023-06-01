@@ -1,0 +1,71 @@
+<div id="success-div" style="display: 'none'" class="mb-3 inline-flex w-full items-center bg-green-100 px-6 py-5 text-base text-green-700"
+role="alert">
+<span class="mr-2">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    class="h-5 w-5">
+    <path
+      fill-rule="evenodd"
+      d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+      clip-rule="evenodd" />
+  </svg>
+</span>
+Announcement successfully created!
+</div>
+<div id="error-div" style="display: 'none'" class="mb-3 inline-flex w-full items-center bg-red-100 px-6 py-5 text-base text-red-700"
+  role="alert">
+  <span class="mr-2">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      class="h-5 w-5">
+      <path
+        fill-rule="evenodd"
+        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+        clip-rule="evenodd" />
+    </svg>
+  </span>
+  Error encountered! Announcement not created!
+</div>
+<div class="ml-4">
+  <div>
+    <h1 class="text-4xl font-semibold text-gray-900">Create Announcement</h1>
+    <form [formGroup]="announcementForm" (ngSubmit)="onAnnouncementSubmit()">
+      <div class="mb-4">
+        <label for="title" class="block text-gray-700 font-bold mb-2">Title</label>
+        <input type="text" id="title" formControlName="title" class="w-1/2 px-3 py-2 border border-gray-300 rounded" />
+      </div>
+      <div class="mb-4">
+        <label for="body" class="block text-gray-700 font-bold mb-2">Body</label>
+        <textarea id="body" formControlName="body" class="w-1/2 px-3 py-2 border border-gray-300 rounded"></textarea>
+      </div>
+      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save</button>
+    </form>
+  </div>
+  <br>
+  <hr>
+  <div>
+    <h1 class="text-4xl font-semibold text-gray-900 my-2">Update Employee Info</h1>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th class="py-2 px-4 border-b">Last Name</th>
+            <th class="py-2 px-4 border-b">First Name</th>
+            <th class="py-2 px-4 border-b"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of allUsers">
+            <td class="py-2 px-4 border-b">{{user[2]}}</td>
+            <td class="py-2 px-4 border-b">{{user[1]}}</td>
+            <td class="py-2 px-4 border-b"><button class="rounded-md text-white p-1" style="background-color: #003a66;" (click)="navigateToProfile(user[0])">Edit User</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
