@@ -9,21 +9,23 @@ import { AboutComponent } from './about/about.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-  {path: 'employee-docs', component: EmployeeDocsComponent, canActivate: [AuthGuard]},
-  {path: 'team', component: TeamComponent, canActivate: [AuthGuard]},
-  {path: 'about', component: AboutComponent, canActivate: [AuthGuard]},
-  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-  {path: 'profile-edit', component: ProfileEditComponent, canActivate: [AuthGuard]},
-  {path: 'auth', component: AuthComponent},
-  {path: 'calendar', component: CalendarComponent},
-]
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'employee-docs', component: EmployeeDocsComponent, canActivate: [AuthGuard] },
+  { path: 'team', component: TeamComponent, canActivate: [AuthGuard] },
+  { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
+  { path: 'profile/:id/edit', component: ProfileEditComponent, pathMatch: 'full', canActivate: [AuthGuard] },
+  { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard], pathMatch: 'full'},
+  { path: 'calendar', component: CalendarComponent, canActivate: [AuthGuard], pathMatch: 'full'},
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], pathMatch: 'full' },
+  { path: 'auth', component: AuthComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

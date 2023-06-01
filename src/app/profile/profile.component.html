@@ -1,104 +1,66 @@
-<!-- <body class="font-sans antialiased leading-normal tracking-wider bg-cover">
-
-
-  <div class="max-w-4xl flex items-center mx-auto my-32">
-    <div class="bg-blue-900 p-4 rounded-md">
-      <div>
-        <img class="w-48 h-48 rounded-md shadow-lg mb-4" src="https://tv-fanatic-res.cloudinary.com/iu/s--hNVyHBFS--/t_full/cs_srgb,f_auto,fl_strip_profile.lossy,q_auto:420/v1576624894/grunkle-stan-gravity-falls-season-2-episode-11.png" alt="Profile Image" />
-      </div>
-      <h1 class="text-white text-3xl font-bold pt-8 lg:pt-0">API name</h1>
-      <ul class="md:w-auto bg-blue-200 text-black-900 hover:shadow py-2 px-3 mt-3 rounded inline-block space-y-2">
-        <li class="text-lg rounded-xl py-2 px-4 mx-auto space-x-2 font-semibold">
-          <span>Employed since</span>
-          <span>API hire date</span>
-        </li>
-      </ul>
-      <div class="flex flex-row text-gray-900 hover:shadow py-2 px-3 mt-3 bg-blue-100 p-3 rounded-xl">
-        <div class="md:flex">
-          <div class="w-full md:w-9/12 mx-2 h-64">
-            <div class="text-gray-700">
-              <div class="grid md:grid-cols-2 text-lg">
-                <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Phone</div>
-                  <div class="px-4 py-2">API phone</div>
+<section class="vh-screen bg-gray-200">
+  <div class="container py-5">
+    <div class="flex justify-center items-center h-full">
+      <div class="lg:w-2/3 xl:w-1/2 mb-4 mb-lg-0">
+        <div class="bg-white shadow-lg rounded-md">
+          <div class="flex">
+            <div
+              class="w-1/3 bg-gradient-to-b from-blue-500 to-blue-900 text-center text-white rounded-tl-md rounded-bl-md p-8"
+            >
+              <img
+                src="{{ (apiData.image_url) ? apiData.image_url : 'https://tv-fanatic-res.cloudinary.com/iu/s--hNVyHBFS--/t_full/cs_srgb,f_auto,fl_strip_profile.lossy,q_auto:420/v1576624894/grunkle-stan-gravity-falls-season-2-episode-11.png' }}"
+                alt="Profile Pic"
+                class="my-5 mx-auto w-32 h-32 rounded-full object-cover"
+              />
+              <h5 class="text-2xl font-bold mb-2">{{ apiData.name }}</h5>
+              <ul class="text-black-900 py-2 px-3 mt-2 rounded space-y-1">
+                <li
+                  class="text-lg rounded-xl py-2 px-4 space-x-2 font-semibold"
+                >
+                  <span>Employed since</span>
+                  <span>{{ apiData.hiring_date }}</span>
+                </li>
+                <button (click)="editUser()"
+                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+                >
+                  Edit Profile
+              </button>
+              </ul>
+              <i class="far fa-edit mt-4 text-2xl"></i>
+            </div>
+            <div class="w-2/3 p-8">
+              <h6 class="text-2xl font-semibold mb-4">Employee Information</h6>
+              <hr class="mt-0 mb-4" />
+              <div class="grid grid-cols-2 gap-8">
+                <div>
+                  <h6 class="text-lg font-semibold">Email</h6>
+                  <p class="text-gray-600">{{ apiData.email }}</p>
                 </div>
-                <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Emergency Contact Name</div>
-                  <div class="px-4 py-2">API emergency contact name</div>
+              </div>
+              <h6 class="text-2xl font-semibold mt-8">Emergency Contact</h6>
+              <hr class="mt-0 mb-4" />
+              <div class="grid grid-cols-2 gap-8">
+                <div>
+                  <h6 class="text-lg font-semibold">Name</h6>
+                  <p class="text-gray-600">
+                    {{ apiData.emergency_contact_name }}
+                  </p>
+                  <h6 class="text-lg font-semibold">Phone</h6>
+                  <p class="text-gray-600">
+                    {{ apiData.emergency_contact_phone }}
+                  </p>
                 </div>
-                <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Email</div>
-                  <div class="px-4 py-2">API email</div>
-                </div>
-                <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Emergency Contact Phone</div>
-                  <div class="px-4 py-2">API emergency contact phone</div>
-                </div>
+              </div>
+              <h6 class="text-2xl font-semibold mt-8">Earned Time Off</h6>
+              <hr class="mt-0 mb-4" />
+              <div>
+                <h6 class="text-lg font-semibold">Hours</h6>
+                <p class="text-gray-600">{{ apiData.available_eto }}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-2" onclick="editProfile()">Edit Profile</button>
     </div>
   </div>
-  </body> -->
-
-
-  <section class="vh-screen bg-gray-200">
-    <div class="container py-5">
-      <div class="flex justify-center items-center h-full">
-        <div class="lg:w-2/3 xl:w-1/2 mb-4 mb-lg-0">
-          <div class="bg-white shadow-lg rounded-md">
-            <div class="flex">
-              <div class="w-1/3 bg-gradient-to-b from-blue-500 to-blue-900 text-center text-white rounded-tl-md rounded-bl-md p-8">
-                <img src="https://tv-fanatic-res.cloudinary.com/iu/s--hNVyHBFS--/t_full/cs_srgb,f_auto,fl_strip_profile.lossy,q_auto:420/v1576624894/grunkle-stan-gravity-falls-season-2-episode-11.png" alt="Avatar" class="my-5 mx-auto w-32 h-32 rounded-full object-cover" />
-                <h5 class="text-2xl font-bold mb-2">{{ apiData?.name }}</h5>
-                <ul class="text-black-900 py-2 px-3 mt-2 rounded space-y-1">
-                  <li class="text-lg rounded-xl py-2 px-4 space-x-2 font-semibold">
-                    <span>Employed since</span>
-                    <span>{{ apiData?.hiring_date}}</span>
-                  </li>
-                </ul>
-                <i class="far fa-edit mt-4 text-2xl"></i>
-              </div>
-              <div class="w-2/3 p-8">
-                <h6 class="text-2xl font-semibold mb-4">Employee Information</h6>
-                <hr class="mt-0 mb-4">
-                <div class="grid grid-cols-2 gap-8">
-                  <div>
-                    <h6 class="text-lg font-semibold">Email</h6>
-                    <p class="text-gray-600">{{ apiData?.email }}</p>
-                  </div>
-                  <div>
-                    <h6 class="text-lg font-semibold">Phone</h6>
-                    <p class="text-gray-600">{{ apiData?.phone }}</p>
-                  </div>
-                </div>
-                <h6 class="text-2xl font-semibold mt-8">Emergency Contact</h6>
-                <hr class="mt-0 mb-4">
-                <div class="grid grid-cols-2 gap-8">
-                  <div>
-                    <h6 class="text-lg font-semibold">Name</h6>
-                    <p class="text-gray-600">{{ apiData?.emergency_contact_name}}</p>
-                  </div>
-                  <div>
-                    <h6 class="text-lg font-semibold">Phone</h6>
-                    <p class="text-gray-600">{{ apiData?.emergency_contact_phone }}</p>
-                  </div>
-                </div>
-                <h6 class="text-2xl font-semibold mt-8">Earned Time Off</h6>
-                <hr class="mt-0 mb-4">
-                <div>
-                  <h6 class="text-lg font-semibold">Hours</h6>
-                  <p class="text-gray-600">{{ apiData?.available_eto }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
+</section>

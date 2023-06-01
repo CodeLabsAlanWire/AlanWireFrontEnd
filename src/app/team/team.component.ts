@@ -1,26 +1,35 @@
-import { Component } from '@angular/core';
-
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ApiService } from '../shared/api.service';
+import { Subscription } from 'rxjs';
+import { Employee } from '../shared/employee.interface';
+import { GetAllPayload } from '../shared/api.service';
+import { UsersService } from '../shared/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-team',
   templateUrl: './team.component.html',
   styleUrls: ['./team.component.css']
 })
-export class TeamComponent {
-  allUsers: any[]; // Modify the type according to your user data structure
+export class TeamComponent implements OnInit, OnDestroy {
+  allUsersSub: Subscription;
+  allUsers = [];
 
-  constructor() {
-    // Initialize the allUsers array with sample data
-    this.allUsers = [
-      [1, 'John', 'Doe'],
-      [2, 'Jane', 'Smith'],
-      [3, 'Alice', 'Johnson']
-      // Add more user data as needed
-    ];
+  constructor(private apiService: ApiService, private usersService: UsersService, private router: Router) { }
+
+  ngOnInit(): void {
+    this.allUsersSub = this.apiService.getAll().subscribe((res: GetAllPayload) => {
+      this.allUsers = res.payload;
+      console.log(res.payload);
+    })
   }
 
-  navigateToProfile(userId: number) {
-    // Implement your navigation logic here
-    console.log('Navigating to profile of user with ID:', userId);
+  navigateToProfile(id: number) {
+    this.usersService.getUserData(id);
+    this.router.navigate(['profile/id'])
+  }
+
+  ngOnDestroy(): void {
+
   }
 }
