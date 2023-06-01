@@ -17,18 +17,11 @@
     </button>
   </div>
   <div class="grid grid-cols-7 gap-6">
-    <div class="text-center font-semibold text-gray-600 uppercase">Sunday</div>
-    <div class="text-center font-semibold text-gray-600 uppercase">Monday</div>
-    <div class="text-center font-semibold text-gray-600 uppercase">Tuesday</div>
-    <div class="text-center font-semibold text-gray-600 uppercase">
-      Wednesday
-    </div>
-    <div class="text-center font-semibold text-gray-600 uppercase">
-      Thursday
-    </div>
-    <div class="text-center font-semibold text-gray-600 uppercase">Friday</div>
-    <div class="text-center font-semibold text-gray-600 uppercase">
-      Saturday
+    <div
+      *ngFor="let day of daysOfWeek"
+      class="text-center font-semibold text-gray-600 uppercase"
+    >
+      {{ day }}
     </div>
 
     <div

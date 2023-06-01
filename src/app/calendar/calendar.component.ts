@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, inject } from '@angular/core';
 import * as moment from 'moment';
+import { EventService } from '../shared/services/event.service';
 
 interface CalendarEvent {
   day: moment.Moment;
@@ -10,25 +10,33 @@ interface CalendarEvent {
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+  styleUrls: ['./calendar.component.css'],
 })
-export class CalendarComponent {
-  currentDate: moment.Moment;
-  calendarDays: moment.Moment[];
-  showEventForm: boolean = false;
-  selectedDay: moment.Moment;
-  eventName: string;
-  events: CalendarEvent[] = [];
+export class CalendarComponent implements OnInit {
+  public daysOfWeek: string[] = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ];
+  public currentDate: moment.Moment = moment();
+  public calendarDays: moment.Moment[];
+  public showEventForm: boolean = false;
+  public selectedDay: moment.Moment;
+  public eventName: string;
+  public events: CalendarEvent[] = [];
 
+  // Injections
+  private eventService = inject(EventService);
 
-  constructor(private http: HttpClient) {
-
-    this.currentDate = moment();
+  ngOnInit(): void {
     this.generateCalendar();
   }
 
-
-
+  // Calendar Functions
   generateCalendar() {
     const startDate = moment(this.currentDate).startOf('month').startOf('week');
     const endDate = moment(this.currentDate).endOf('month').endOf('week');
@@ -48,6 +56,8 @@ export class CalendarComponent {
     this.generateCalendar();
   }
 
+  // Event Functions
+
   addEvent(day: moment.Moment) {
     this.selectedDay = day;
     this.showEventForm = true;
@@ -55,18 +65,22 @@ export class CalendarComponent {
   }
 
   deleteEvent(day: moment.Moment) {
-    this.events = this.events.filter(event => !event.day.isSame(day, 'day'));
+    this.events = this.events.filter((event) => !event.day.isSame(day, 'day'));
   }
-
 
   submitEvent() {
     if (this.eventName) {
       const event: CalendarEvent = {
         day: this.selectedDay,
-        name: this.eventName
+        name: this.eventName,
       };
-      this.createEvent()
       this.events.push(event);
+      this.createEvent(
+        this.eventName,
+        this.selectedDay.date(),
+        this.selectedDay.month() + 1,
+        this.selectedDay.year()
+      );
       this.cancelEvent();
     }
   }
@@ -78,31 +92,16 @@ export class CalendarComponent {
   }
 
   isEventOnDay(day: moment.Moment): boolean {
-    return this.events.some(event => event.day.isSame(day, 'day'));
+    return this.events.some((event) => event.day.isSame(day, 'day'));
   }
 
   getEventNameForDay(day: moment.Moment): string {
-    const event = this.events.find(event => event.day.isSame(day, 'day'));
+    const event = this.events.find((event) => event.day.isSame(day, 'day'));
     return event ? event.name : '';
   }
 
-  // createEvent(name: string, day: number, month: number, year: number) {
-    createEvent() {
-    // const event = { name, day, month, year };
-    const event = {
-      name: 'hello',
-      day: 2,
-      month: 11,
-      year: 2020
-    }
-
-
-    this.http.post('https://alanwireapi.codefilabsapi.com/api/v1/events/create', {event}).subscribe((res) => console.log(res))
+  createEvent(name: string, day: number, month: number, year: number) {
+    const event = { name, day, month, year };
+    this.eventService.createEvent(event).subscribe((res) => console.log(res));
   }
-
-
-  }
-
-
-
-
+}
